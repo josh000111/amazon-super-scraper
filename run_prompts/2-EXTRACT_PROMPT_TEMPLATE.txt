@@ -1,0 +1,82 @@
+DATA EXTRACTION — Amazon product comparison
+(Run this session with Sonnet. It is offline — reads local files only, no network.)
+
+CONTEXT
+The scraper has saved one JSON file per product into `product_data/`.
+Each file is named `<timestamp>__asin-<ASIN>.json` and contains clean,
+structured text extracted directly from the live Amazon page DOM — no HTML
+tags, no scripts, no attributes. Just readable text, organised by section.
+
+JSON fields available in each file:
+  url                — the Amazon product URL
+  asin               — product ASIN
+  scrapedAt          — ISO timestamp of when it was scraped
+  title              — product title
+  featureBullets     — "About this item" bullet points
+  productDescription — "Product Description" long-form text
+  aplusContent       — A+ Enhanced Brand Content (rich brand descriptions,
+                       materials, care info, use-cases, etc.)
+  fromManufacturer   — "From the manufacturer" section (second A+ block)
+  productDetails     — main specs table (dimensions, weight, materials, ASIN)
+  detailBullets      — bullet-style specs (used on some categories)
+  technicalSpecs     — technical specifications table
+  variations         — available colour / size / style options
+  ratingSummary      — overall star rating and total review count
+  buybox             — price, Prime badge, and estimated delivery date together
+  availability       — stock status ("In Stock", "Only 3 left", etc.)
+  prime              — Prime eligibility section
+  deliveryMessage    — standalone delivery date message (when present)
+
+NOTE ON PRIME: If `prime` and `deliveryMessage` are empty for a product, the
+page was scraped from a non-UK IP and Amazon did not render Prime/delivery info
+for that location. Check the `buybox` field instead — it often still contains
+the delivery estimate. Re-scraping from a UK IP will fully populate these fields.
+
+TASK
+Read every JSON file in `product_data/`, extract the data points listed below,
+and compile everything into a single spreadsheet — one row per product.
+
+DATA POINTS TO EXTRACT  (edit this list to match what you need this run)
+- ASIN
+- Product name / title
+- Brand
+- Price (include currency)
+- Star rating
+- Number of ratings / reviews
+- Key feature bullets / description summary
+- Available colours / variants
+- Dimensions (L x W x H)
+- Item weight
+- Materials / fabric
+- Prime availability
+- Estimated delivery date
+- [ ADD OR REMOVE DATA POINTS HERE ]
+
+OUTPUT
+- Create a real .xlsx spreadsheet (use your spreadsheet skill).
+- One header row, then one row per product, one column per data point above.
+- Save it to the project root as: product-comparison-[TODAY'S DATE].xlsx
+
+HOW TO READ THE JSON
+- Read ONE file at a time rather than loading them all into context at once.
+- A data point may appear across multiple fields — for example, materials might
+  be in `featureBullets`, `productDescription`, `aplusContent`, or
+  `productDetails`. Check all relevant fields before marking a value as N/A.
+- For price and availability, prefer `buybox` as it is the primary source.
+- For delivery and Prime, check `buybox`, `prime`, and `deliveryMessage`.
+- For colour options, use `variations`.
+
+ACCURACY RULES  (these matter — this feeds a real comparison)
+- Never invent, guess, or estimate a value. If a data point is not present
+  in any field, leave the cell blank or write "N/A".
+- Normalise units only where it is safe and obvious (in/cm, lb/kg). If there
+  is any doubt, keep the original value as written.
+- If a file's `title` field is empty or the content looks like a CAPTCHA /
+  error page rather than a product, list it separately as "blocked / not a
+  product page" and skip it.
+
+REPORT BACK WITH
+- The saved spreadsheet path.
+- A short summary: how many products were extracted, and which data points
+  were missing or uncertain for which products.
+- Any files skipped, with the reason.

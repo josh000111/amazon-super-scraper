@@ -1,0 +1,7 @@
+node_modules/
+scraped_data/
+cleaned_data/
+product_data/
+*.log
+*.xlsx
+.DS_Store

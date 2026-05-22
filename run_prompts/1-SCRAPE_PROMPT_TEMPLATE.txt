@@ -1,0 +1,55 @@
+⚠️ BEFORE STARTING — wait for my explicit "yes, confirmed" before running anything.
+I am attesting that:
+- My VPN is ON
+- I am logged out of Amazon in my Mac's default browser
+- Switch to Haiku for this Scraping task
+- Rerun session with Sonnet if Scraping run fails (Sonnet better for debugging a Node error,
+  a dependency issue — but not the designed 503/CAPTCHA/timeout stop)
+
+You cannot verify either of these yourself, so do not run the scraper until I
+reply confirming both.
+
+TASK
+Using the existing `scrape-amazon-products.js` and `amazon-scraper-utils.js`
+files in this project, scrape the following Amazon product URLs.
+
+The scraper extracts structured product data directly from the live page DOM and
+saves each product as a clean JSON file to `product_data/`. No HTML files are
+saved and no separate cleaning step is needed.
+
+URLs:
+1. [PASTE LINK]
+2. [PASTE LINK]
+3. [PASTE LINK]
+4. [PASTE LINK]
+5. [PASTE LINK]
+6. [PASTE LINK]
+7. [PASTE LINK]
+8. [PASTE LINK]
+9. [PASTE LINK]
+10. [PASTE LINK]
+
+HOW TO RUN
+- Run the scraper with Node, passing the URLs as command-line arguments:
+    node scrape-amazon-products.js "<url1>" "<url2>" ... "<url10>"
+- Do NOT edit either file. All bot-evasion behaviour — random 3-8s delays,
+  rotating Mac/Chrome user agents, realistic headers, automation-signal
+  suppression, and a fresh browser context with a jittered viewport per
+  request — is already built into the utility module. Nothing to configure.
+- Note: this project uses the Playwright *library* (driven by the Node script).
+  There is no "Playwright CLI" scraping command — running
+  `node scrape-amazon-products.js` is the correct and only way to scrape.
+
+STOP CONDITIONS (already enforced by the script — do not override or retry)
+- The script halts IMMEDIATELY on the first 503/429 response, CAPTCHA or
+  bot-check page, or navigation timeout. It will NOT attempt any remaining
+  URLs after that point.
+- A timeout can also mean a genuinely slow page load, not only a block —
+  either way, do not retry. Surface the STOP message to me right away.
+
+REPORT BACK WITH
+- Which URLs were saved successfully, with their file paths in product_data/.
+- The number of fields populated in each JSON file (the script logs this).
+- If the run stopped early: which URL triggered the stop and why (503/429 /
+  CAPTCHA / timeout), and which URLs were therefore never attempted.
+- If all succeeded: confirm all JSON files are present in product_data/.

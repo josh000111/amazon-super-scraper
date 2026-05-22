@@ -1,0 +1,14 @@
+⛔ THIS STEP IS NO LONGER NEEDED
+
+The scraper (prompt 1) now extracts clean structured text directly from the
+live page DOM and saves it as JSON. There is no raw HTML to clean.
+
+Skip straight to prompt 3 (extraction).
+
+──────────────────────────────────────────────────────────────────────────────
+ARCHIVED — for reference only
+──────────────────────────────────────────────────────────────────────────────
+Previously this step ran `node prepare-html.js` to strip scripts, styles and
+noise from raw HTML files in `scraped_data/` before writing cleaned copies to
+`cleaned_data/`. That pipeline is replaced by the DOM-extraction approach in
+the updated `scrape-amazon-products.js`.
