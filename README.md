@@ -120,6 +120,29 @@ The scraper reads the **live rendered DOM** — the same source that browser-bas
 
 ---
 
+## ⚠️ Rate limiting and blocking warnings
+
+**Do not scrape more than 100 products in a 24-hour period.** Amazon's anti-bot systems will detect patterns and block your IP address, even with rotating user agents and stealth headers in place. Blocks can be temporary (24–72 hours) or permanent.
+
+**If you exceed safe usage thresholds, you may encounter:**
+- `503 Service Unavailable` responses
+- `429 Too Many Requests` responses
+- CAPTCHA challenges (which the scraper cannot pass automatically)
+- IP address blocks (temporary or permanent)
+
+**Once blocked, you cannot resume scraping without:**
+- Waiting for the block to expire (often 24–72 hours), OR
+- Switching to a different IP address (VPN/proxy), OR
+- Waiting until Amazon lifts the block
+
+**Best practices:**
+- Scrape in small batches (10–50 products) with 24+ hour gaps between runs
+- Use a rotating residential VPN if scraping multiple batches
+- Monitor Amazon's response codes — stop immediately on 429 or 503
+- Respect Amazon's [Conditions of Use](https://www.amazon.com/gp/help/customer/display.html?nodeId=508088)
+
+---
+
 ## Before you run
 
 1. **Turn your VPN on.** Without it, requests originate from your real IP address.
