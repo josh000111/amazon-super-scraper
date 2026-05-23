@@ -1,7 +1,7 @@
 {
   "name": "amazon-project-scraping",
   "version": "1.0.0",
-  "description": "",
+  "description": "Extract clean, structured product data from Amazon - DOM-based scraper using Playwright, outputs labelled JSON per product.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
