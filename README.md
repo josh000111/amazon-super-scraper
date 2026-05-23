@@ -1,4 +1,4 @@
-# Amazing Amazon Scraper
+# Amazon Super Scraper
 
 Extract clean, structured product data from Amazon using your AI Agent. Drop in your Amazon product URLs, run one command, get a tidy JSON file per product and a ready-to-use product comparison spreadsheet. DOM-based scraper, no bloated HTML.
 
@@ -6,13 +6,13 @@ Extract clean, structured product data from Amazon using your AI Agent. Drop in 
 
 ---
 
-## Why Amazing Amazon Scraper?
+## Why Amazon Super Scraper?
 
-Most Amazon scrapers hand you a 1.5 MB wall of raw HTML and leave the rest to you. **Amazing Amazon Scraper skips the mess entirely.** It drives a real Chromium browser, reads the live page DOM exactly the way Google's and Anthropic's AI assistants do, and extracts only the text that matters — saving it as clean, labelled JSON that any script, spreadsheet, or LLM can read instantly.
+Most Amazon scrapers hand you a 1.5 MB wall of raw HTML and leave the rest to you. **Amazon Super Scraper skips the mess entirely.** It drives a real Chromium browser, reads the live page DOM exactly the way Google's and Anthropic's AI assistants do, and extracts only the text that matters — saving it as clean, labelled JSON that any script, spreadsheet, or LLM can read instantly.
 
 ### What sets it apart
 
-| | Amazing Amazon Scraper | Typical HTML scrapers |
+| | Amazon Super Scraper | Typical HTML scrapers |
 |---|---|---|
 | **Output format** | Structured JSON — labelled fields, plain text | Raw HTML dump |
 | **File size per product** | ~5–20 KB | ~1–2 MB |
@@ -155,7 +155,7 @@ The scraper reads the **live rendered DOM** — the same source that browser-bas
 ## Project structure
 
 ```
-Amazing-Amazon-Scraper/
+Amazon Super Scraper/
 ├── scrape-amazon-products.js    # Main scraper — run this
 ├── amazon-scraper-utils.js      # Shared utilities (UA rotation, stealth, logging)
 ├── prepare-html.js              # Legacy HTML cleaner (no longer needed)
