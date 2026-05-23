@@ -1,10 +1,9 @@
 ⚠️ BEFORE STARTING — wait for my explicit "yes, confirmed" before running anything.
 I am attesting that:
 - My VPN is ON
-- I am logged out of Amazon in my Mac's default browser
-- Switch to Haiku for this Scraping task
-- Rerun session with Sonnet if Scraping run fails (Sonnet better for debugging a Node error,
-  a dependency issue — but not the designed 503/CAPTCHA/timeout stop)
+- I am logged out of Amazon on all my computers browsers
+- Switch to Haiku (or a similar token efficient model) for this Scraping task
+- Rerun session with Sonnet (or similar intelligent model) if Scraping run fails (Sonnet better for debugging a Node error, a dependency issue — but not the designed 503/CAPTCHA/timeout stop)
 
 You cannot verify either of these yourself, so do not run the scraper until I
 reply confirming both.

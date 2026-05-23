@@ -35,6 +35,10 @@ ${line}
   ***  READ THIS BEFORE RUNNING  ***
 ${line}
   1. Turn your VPN ON. Without it, requests originate from your real IP.
+     (Select a VPN server in the same country as the Amazon store you are
+     scraping, e.g. a UK server for amazon.co.uk. Without a matching server
+     location, pricing and delivery information will not be shown on the page
+     and those fields will be empty in the output.)
   2. Log OUT of Amazon in every normal/headed browser on this machine, so
      this activity is never associated with your Amazon account.
   3. This is for occasional personal product comparison only. Automated
@@ -172,8 +176,9 @@ async function fetchOne(browser, url, index, total) {
       // Main product title
       title: firstOf('#productTitle', '#title'),
 
-      // "About this item" bullet points — primary feature list
-      featureBullets: getText('#featurebullets_feature_div'),
+      // "About this item" bullet points — primary feature list.
+      // #pqv-feature-bullets is used by Amazon's newer "Voyager" page layout.
+      featureBullets: firstOf('#featurebullets_feature_div', '#pqv-feature-bullets'),
 
       // "Product Description" long-form text section
       productDescription: getText('#productDescription_feature_div'),
@@ -192,7 +197,9 @@ async function fetchOne(browser, url, index, total) {
       // ── Product specifications ──────────────────────────────────────────────
 
       // Main specs table: dimensions, weight, materials, ASIN, etc.
-      productDetails: getText('#productDetails_feature_div'),
+      // #voyagerAccordian_feature_div is the equivalent container in Amazon's
+      // newer "Voyager" layout (used on many UK and updated US listings).
+      productDetails: firstOf('#productDetails_feature_div', '#voyagerAccordian_feature_div'),
 
       // Bullet-style spec list (appears on some categories instead of a table)
       detailBullets: getText('#detailBulletsWrapper_feature_div'),
