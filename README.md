@@ -1,6 +1,6 @@
 # Amazing Amazon Scraper
 
-Extract clean, structured product data from Amazon using your AI Agent. Drop in your URLs, run one command, get a tidy JSON file per product and a ready-to-use product comparison spreadsheet. DOM-based scraper, no bloated HTML.
+Extract clean, structured product data from Amazon using your AI Agent. Drop in your Amazon product URLs, run one command, get a tidy JSON file per product and a ready-to-use product comparison spreadsheet. DOM-based scraper, no bloated HTML.
 
 ---
 
